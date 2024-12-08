@@ -21,12 +21,8 @@ function Profile({
   return (
     <div className={container}>
       <div className={descriptionContainer}>
-        <img
-          className={userAvatar}
-          src={avatar}
-          alt={username + " " + "avatar"}
-        />
-        <p className={userName}>Jacques Gluke{username}</p>
+        <img className={userAvatar} src={avatar} alt={`${username} avatar`} />
+        <p className={userName}>{username}</p>
         <p className={userTag}>@{tag}</p>
         <p className={userLocation}>{location}</p>
       </div>
@@ -53,7 +49,11 @@ Profile.propTypes = {
   username: PropTypes.string.isRequired,
   tag: PropTypes.string.isRequired,
   location: PropTypes.string.isRequired,
-  stats: PropTypes.object.isRequired,
+  stats: PropTypes.shape({
+    followers: PropTypes.number.isRequired,
+    views: PropTypes.number.isRequired,
+    likes: PropTypes.number.isRequired,
+  }).isRequired,
 };
 
 export default Profile;
